@@ -148,11 +148,28 @@ export type FeaturedProject = {
   overview: string
   impact: string
   stack: string[]
-  github: string
+  github?: string
   demo?: string
+  stats?: { value: string; label: string }[]
 }
 
 export const featuredProjects: FeaturedProject[] = [
+  {
+    name: 'Mobile Dairy — Dairy Management Platform',
+    image: '/images/projects/mobile-dairy.png',
+    tagline: 'what I build at work, every day',
+    overview:
+      'India’s most popular milk-collection software — a multi-tenant platform for dairy cooperatives, collection centres and dairy plants, covering milk collection, quality-based billing, dispatch, inventory and payments. I work on its Django backend: REST APIs, business workflows and the reporting modules behind daily operations.',
+    impact: 'In production since 2017, powering real dairy businesses across India every day.',
+    stats: [
+      { value: '100k+', label: 'App Downloads' },
+      { value: '4.9★', label: 'Play Store Rating' },
+      { value: '3', label: 'Production Apps' },
+      { value: '10k+', label: 'Dairy Centers Served' },
+    ],
+    stack: ['Django REST Framework', 'PostgreSQL', 'Celery', 'Redis', 'AWS'],
+    demo: 'https://mobiledairy.co.in/?lan=en',
+  },
   {
     name: 'NutriVision AI',
     image: '/images/projects/nutrivision-ai.png',

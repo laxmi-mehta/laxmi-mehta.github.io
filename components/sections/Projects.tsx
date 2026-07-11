@@ -16,7 +16,7 @@ export default function Projects() {
               {/* artwork */}
               <Reveal className={i % 2 ? 'lg:order-2' : ''}>
                 <a
-                  href={p.github}
+                  href={p.github ?? p.demo}
                   target="_blank"
                   rel="noreferrer"
                   className="group block overflow-hidden rounded-lg border border-moonsilver/15 shadow-float"
@@ -44,6 +44,25 @@ export default function Projects() {
                   </p>
                 </Reveal>
 
+                {/* headline numbers, when a project has earned them */}
+                {p.stats && (
+                  <Reveal delay={0.15}>
+                    <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      {p.stats.map((s) => (
+                        <div
+                          key={s.label}
+                          className="paper-dark rounded-sm px-3 py-4 text-center backdrop-blur-sm"
+                        >
+                          <p className="font-heading text-2xl text-lantern">{s.value}</p>
+                          <p className="mt-1 text-[10px] uppercase tracking-wideish text-moonsilver/60">
+                            {s.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </Reveal>
+                )}
+
                 <Reveal delay={0.2}>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {p.stack.map((s) => (
@@ -57,22 +76,28 @@ export default function Projects() {
                   </div>
 
                   <div className="mt-7 flex flex-wrap gap-4">
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full bg-moonsilver px-7 py-3 text-sm font-medium text-midnight transition-transform duration-500 hover:-translate-y-1"
-                    >
-                      View on GitHub
-                    </a>
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full bg-moonsilver px-7 py-3 text-sm font-medium text-midnight transition-transform duration-500 hover:-translate-y-1"
+                      >
+                        View on GitHub
+                      </a>
+                    )}
                     {p.demo && (
                       <a
                         href={p.demo}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-moonsilver/40 px-7 py-3 text-sm font-medium text-moonsilver transition-all duration-500 hover:-translate-y-1 hover:border-moonsilver"
+                        className={
+                          p.github
+                            ? 'rounded-full border border-moonsilver/40 px-7 py-3 text-sm font-medium text-moonsilver transition-all duration-500 hover:-translate-y-1 hover:border-moonsilver'
+                            : 'rounded-full bg-moonsilver px-7 py-3 text-sm font-medium text-midnight transition-transform duration-500 hover:-translate-y-1'
+                        }
                       >
-                        Live Demo
+                        Visit Live Site
                       </a>
                     )}
                   </div>
