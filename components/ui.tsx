@@ -3,6 +3,24 @@
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
+// renders text with **term** markers as highlighted words
+export function Marked({ text, accent = 'text-ember' }: { text: string; accent?: string }) {
+  const parts = text.split(/\*\*(.+?)\*\*/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 ? (
+          <strong key={i} className={`font-semibold ${accent}`}>
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  )
+}
+
 export function Reveal({
   children,
   delay = 0,

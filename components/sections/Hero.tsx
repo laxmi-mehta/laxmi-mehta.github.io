@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { profile } from '@/data/content'
 
 const nameLetters = profile.name.split('')
@@ -55,6 +55,14 @@ function GrassBlade({ left, height, delay, dark }: { left: string; height: numbe
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const [roleIdx, setRoleIdx] = useState(0)
+
+  // cycle through the profiles, one every few seconds
+  useEffect(() => {
+    const t = setInterval(() => setRoleIdx((i) => (i + 1) % profile.roles.length), 2800)
+    return () => clearInterval(t)
+  }, [])
+
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const farY = useTransform(scrollYProgress, [0, 1], [0, 130])
   const midY = useTransform(scrollYProgress, [0, 1], [0, 60])
@@ -217,14 +225,33 @@ export default function Hero() {
           className="mt-8 h-px w-28 bg-bark/40"
         />
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 2.1 }}
-          className="mt-8 text-[11px] font-semibold uppercase tracking-wideish text-bark/70"
+          className="mt-8"
         >
-          {profile.role}
-        </motion.p>
+          <div className="flex flex-wrap items-baseline justify-center gap-x-3 font-heading text-2xl sm:text-3xl md:text-5xl">
+            <span className="font-light text-soil/80">I&rsquo;m a</span>
+            <span className="relative inline-flex min-w-[9ch] justify-start">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={profile.roles[roleIdx]}
+                  initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -16, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="whitespace-nowrap font-medium text-ember"
+                >
+                  {profile.roles[roleIdx]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </div>
+          <p className="mt-3 text-base text-bark/85 md:text-xl">
+            at <span className="font-semibold text-ember">{profile.company}</span> · {profile.location}
+          </p>
+        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 18 }}

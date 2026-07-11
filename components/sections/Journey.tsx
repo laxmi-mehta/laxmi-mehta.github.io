@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { milestones } from '@/data/content'
-import { Reveal, SectionHeading } from '@/components/ui'
+import { Marked, Reveal, SectionHeading } from '@/components/ui'
 
 export default function Journey() {
   const ref = useRef<HTMLDivElement>(null)
@@ -50,12 +50,16 @@ export default function Journey() {
                         {m.role}
                       </h3>
                       <p className="mt-1 font-hand text-xl text-bark/70">{m.place}</p>
-                      <p className="mt-4 leading-relaxed text-bark/90">{m.summary}</p>
+                      <p className="mt-4 leading-relaxed text-bark/90">
+                        <Marked text={m.summary} />
+                      </p>
                       <ul className="mt-5 space-y-2.5">
                         {m.details.map((d) => (
                           <li key={d} className="flex gap-3 text-sm leading-relaxed text-bark/85">
                             <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-ember/70" />
-                            {d}
+                            <span>
+                              <Marked text={d} />
+                            </span>
                           </li>
                         ))}
                       </ul>

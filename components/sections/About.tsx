@@ -2,8 +2,8 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion'
-import { journal } from '@/data/content'
-import { Reveal, SectionHeading } from '@/components/ui'
+import { aboutHighlights, aboutMe, profile } from '@/data/content'
+import { Marked, Reveal, SectionHeading } from '@/components/ui'
 
 function Butterfly({ className, delay }: { className: string; delay: number }) {
   return (
@@ -26,7 +26,7 @@ function Butterfly({ className, delay }: { className: string; delay: number }) {
   )
 }
 
-const quickFacts = ['Mumbai, India', 'Backend Developer', 'Django & PostgreSQL', 'Learning ML', 'B.Sc. IT · 9.80 CGPA']
+const quickFacts = ['Mumbai, India', 'Backend Dev @ Adhyay Infotech', 'Django & PostgreSQL', 'Learning ML', 'B.Sc. IT · 9.80 CGPA']
 
 export default function About() {
   return (
@@ -36,6 +36,24 @@ export default function About() {
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="pages from an explorer's journal" title="The Story So Far" />
+
+        {/* the numbers behind the work I ship every day */}
+        <div className="mb-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+          {aboutHighlights.map((h, i) => (
+            <Reveal key={h.label} delay={i * 0.1}>
+              <div
+                className={`paper rounded-sm px-4 py-6 text-center shadow-float transition-transform duration-700 hover:-translate-y-2 ${
+                  i % 2 ? 'md:rotate-[0.5deg]' : 'md:-rotate-[0.5deg]'
+                } hover:rotate-0`}
+              >
+                <p className="font-heading text-3xl text-ember md:text-4xl">{h.value}</p>
+                <p className="mt-2 text-[10px] font-semibold uppercase tracking-wideish text-bark/70 md:text-[11px]">
+                  {h.label}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
 
         <div className="grid gap-10 lg:grid-cols-[2fr,3fr] lg:gap-16">
           {/* the traveller — photo stays with you while the journal scrolls */}
@@ -75,7 +93,7 @@ export default function About() {
             </Reveal>
           </div>
 
-          {/* one long journal page, ruled like a real notebook */}
+          {/* a single about-me page, ruled like a real notebook */}
           <Reveal delay={0.1}>
             <div className="paper relative rounded-sm p-7 shadow-float md:p-10">
               {/* notebook margin line */}
@@ -85,20 +103,28 @@ export default function About() {
               <span className="absolute -left-1.5 top-1/2 h-3 w-3 rounded-full border border-bark/20 bg-cream shadow-inner" />
               <span className="absolute -left-1.5 top-[85%] h-3 w-3 rounded-full border border-bark/20 bg-cream shadow-inner" />
 
-              <div className="space-y-8 pl-6 md:pl-8">
-                {journal.map((page, i) => (
-                  <Reveal key={page.title} delay={0.05 * i} y={20}>
-                    <div className={i > 0 ? 'border-t border-bark/10 pt-8' : ''}>
-                      <div className="flex flex-wrap items-baseline gap-x-3">
-                        <h3 className="font-heading text-xl font-medium text-soil md:text-2xl">
-                          {page.title}
-                        </h3>
-                        <span className="font-hand text-lg text-ember/90">· {page.note}</span>
-                      </div>
-                      <p className="mt-2.5 leading-relaxed text-bark/90">{page.body}</p>
-                    </div>
-                  </Reveal>
-                ))}
+              <div className="pl-6 md:pl-8">
+                <p className="font-hand text-xl text-ember">about me</p>
+                <h3 className="mt-1 font-heading text-2xl font-medium text-soil md:text-3xl">
+                  Who I am
+                </h3>
+                <div className="mt-3 h-px w-12 bg-bark/25" />
+
+                <div className="mt-6 space-y-5">
+                  {aboutMe.map((para, i) => (
+                    <Reveal key={i} delay={0.08 * i} y={16}>
+                      <p className="leading-relaxed text-bark/90 md:text-[17px]">
+                        <Marked text={para} />
+                      </p>
+                    </Reveal>
+                  ))}
+                </div>
+
+                <Reveal delay={0.4} y={12}>
+                  <p className="mt-8 text-right font-hand text-3xl text-soil/80">
+                    — {profile.name.split(' ')[0]}
+                  </p>
+                </Reveal>
               </div>
             </div>
           </Reveal>

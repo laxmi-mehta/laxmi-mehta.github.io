@@ -6,6 +6,9 @@
 export const profile = {
   name: 'Laxmi Mehta',
   role: 'Backend Engineer',
+  company: 'Adhyay Infotech Pvt. Ltd.',
+  // rotating profiles shown large in the hero
+  roles: ['Backend Developer', 'Django & DRF Developer', 'Aspiring ML Engineer', 'Database Craftsman'],
   headline: ['Building reliable systems today.', 'Machine Learning Engineer tomorrow.'],
   subheading:
     'A year spent shipping production APIs taught me how software really behaves under load. Now I am walking the same careful road into machine learning — one model, one experiment, one lesson at a time.',
@@ -16,37 +19,20 @@ export const profile = {
   resume: '/resume.pdf',
 }
 
-export const journal = [
-  {
-    title: 'Who I am',
-    note: 'page one',
-    body: 'A backend engineer from Mumbai who fell in love with the invisible parts of software — the queries, the queues, the quiet machinery that keeps everything running while nobody is watching.',
-  },
-  {
-    title: 'How I think',
-    note: 'a habit of mind',
-    body: 'Slowly, then precisely. I like to understand a system before I change it, sketch the data flow before I write the endpoint, and measure before I optimize. Good engineering feels less like typing and more like listening.',
-  },
-  {
-    title: 'Why backend',
-    note: 'the craft',
-    body: 'Because correctness is a kind of beauty. A well-designed schema, an API that never surprises its callers, a job queue that fails gracefully — these are things you can trust, and building trustworthy things is deeply satisfying.',
-  },
-  {
-    title: 'Why machine learning',
-    note: 'the turning point',
-    body: 'My first ML project — teaching an agent to manage traffic with reinforcement learning — changed something. Systems that learn ask harder questions than systems that follow rules, and I want to spend the next years answering them.',
-  },
-  {
-    title: 'Lessons learned',
-    note: 'carried in the pack',
-    body: 'Production teaches humility: cache invalidation is real, migrations deserve respect, and the simplest design that works is usually the right one. Every incident I have debugged made me a calmer engineer.',
-  },
-  {
-    title: 'Where I am headed',
-    note: 'the horizon',
-    body: 'Toward machine learning engineering — combining a backend engineer’s discipline with a scientist’s curiosity. Reliable data pipelines, honest evaluation, models that actually ship.',
-  },
+// numbers from the Mobile Dairy platform I work on at Adhyay Infotech
+export const aboutHighlights = [
+  { value: '100k+', label: 'App Downloads' },
+  { value: '4.9★', label: 'Play Store Rating' },
+  { value: '64+', label: 'Reports Powered' },
+  { value: '10k+', label: 'Dairy Centers Served' },
+]
+
+// the single about-me page, one paragraph per entry (**term** renders highlighted)
+export const aboutMe = [
+  'I’m a **Backend Developer at Adhyay Infotech**, where I build and maintain the backend of **Mobile Dairy** — a multi-tenant platform that powers milk collection, quality-based billing, dispatch and payments for **10,000+ dairy centers** across India. I own features end to end: **REST APIs with Django**, business workflows, **reporting modules** and **PostgreSQL optimization** for real production data.',
+  'Before this, I completed my **B.Sc. IT** at Model College with a **9.80 CGPA** and packed one summer with **six internships** across Python, web and cloud. Along the way I built everything from React and Vue apps to **NutriVision** — my final-year project, a **CNN-powered food nutrition analyzer** served through Django.',
+  'Now I’m walking a deliberate road into **machine learning**. I keep a public learning log — **100 Days of ML** on GitHub — implementing algorithms from scratch with **NumPy, Pandas and Scikit-learn**, and I ship what I learn as real tools like my **ML Algorithm Visualizer**, deployed live on **Hugging Face**.',
+  'I like software that is boring in the best way: **predictable, measured, reliable**. The kind you stop noticing because it simply works.',
 ]
 
 export const education = [
@@ -77,13 +63,14 @@ export const milestones = [
     role: 'Backend Developer · Adhyay Infotech Pvt. Ltd.',
     place: 'Mumbai, India',
     summary:
-      'Building a large-scale dairy management platform used by dairy cooperatives, collection centres and milk producers.',
+      'Developing and maintaining backend features for a **large-scale dairy management platform** serving **10,000+ dairy centers** — scalable REST APIs, complex business rules and the reporting engine behind daily operations.',
     details: [
-      'RESTful APIs with Django REST Framework, serving web and mobile apps',
-      'Business workflows — farmer onboarding, milk collection & dispatch, collection-centre operations',
-      'Reporting modules (collection, summary, incentive, drill-down) over large datasets',
-      'PostgreSQL optimization — ORM query tuning, migrations, production debugging',
-      'End-to-end features: requirements → API design → build → test → deploy',
+      'Designed and enhanced **scalable REST APIs** with **Django REST Framework**',
+      '**Customer management, transfer mapping and inventory** features with **role-based permissions**',
+      'Built and maintained **64+ analytical and operational reports** with **optimized SQL queries**',
+      'Delivered nearly **200 feature enhancements and bug fixes** across production releases',
+      '**Production debugging and root-cause analysis** — performance, reliability and data accuracy',
+      'Collaborated with **frontend, QA and product teams** through code reviews, testing and **post-release monitoring**',
     ],
     lesson: 'Production software is more than code — it is requirements, reviews and reliability.',
   },
@@ -92,11 +79,11 @@ export const milestones = [
     time: 'Now → next',
     role: 'The road into machine learning',
     place: 'In progress',
-    summary: 'Joining what I know — production systems — with what I am learning: models.',
+    summary: 'Joining what I know — **production systems** — with what I am learning: **models**.',
     details: [
-      'Reinforcement-learning traffic management system using PPO',
-      'CNN skin-disease classifier served through a Django web app',
-      'Studying deep learning with TensorFlow and PyTorch',
+      '**Reinforcement-learning** traffic management system using **PPO**',
+      '**CNN skin-disease classifier** served through a Django web app',
+      'Studying deep learning with **TensorFlow and PyTorch**',
     ],
     lesson: 'A model is only useful once it survives contact with production.',
   },
@@ -105,14 +92,14 @@ export const milestones = [
     time: 'Apr — Aug 2024 · Internships',
     role: 'Where it all started — six internships',
     place: 'Mumbai · Remote',
-    summary: 'A season of saying yes to everything — Python, web, cloud and business.',
+    summary: 'A season of saying yes to everything — **Python, web, cloud and business**.',
     details: [
-      'Octanet Techoctanet Services — Python Development (Jul – Aug 2024)',
-      'CodSoft — Web Development (Jun 2024)',
-      'Internship Studio — Website Design & Development (May – Jun 2024)',
-      'iLearnings Career & Consulting — Web Developer (Jun 2024)',
-      'Younity — Business Development Analyst (Jun 2024)',
-      'iFutures Technologies — Cloud Computing (Apr 2024)',
+      '**Octanet Techoctanet Services** — Python Development (Jul – Aug 2024)',
+      '**CodSoft** — Web Development (Jun 2024)',
+      '**Internship Studio** — Website Design & Development (May – Jun 2024)',
+      '**iLearnings Career & Consulting** — Web Developer (Jun 2024)',
+      '**Younity** — Business Development Analyst (Jun 2024)',
+      '**iFutures Technologies** — Cloud Computing (Apr 2024)',
     ],
     lesson: 'Try many doors early — you only need one to open wide.',
   },
@@ -164,7 +151,7 @@ export const featuredProjects: FeaturedProject[] = [
     stats: [
       { value: '100k+', label: 'App Downloads' },
       { value: '4.9★', label: 'Play Store Rating' },
-      { value: '3', label: 'Production Apps' },
+      { value: '64+', label: 'Reports Powered' },
       { value: '10k+', label: 'Dairy Centers Served' },
     ],
     stack: ['Django REST Framework', 'PostgreSQL', 'Celery', 'Redis', 'AWS'],

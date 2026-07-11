@@ -51,10 +51,10 @@ export default function Projects() {
                       {p.stats.map((s) => (
                         <div
                           key={s.label}
-                          className="paper-dark rounded-sm px-3 py-4 text-center backdrop-blur-sm"
+                          className="rounded-sm border border-lantern/30 bg-lantern/10 px-3 py-4 text-center backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lantern"
                         >
                           <p className="font-heading text-2xl text-lantern">{s.value}</p>
-                          <p className="mt-1 text-[10px] uppercase tracking-wideish text-moonsilver/60">
+                          <p className="mt-1 text-[10px] uppercase tracking-wideish text-moonsilver/80">
                             {s.label}
                           </p>
                         </div>
