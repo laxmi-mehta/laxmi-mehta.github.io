@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+body {
+  @apply font-body text-soil antialiased;
+  background-color: #fbf6ea;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #0a1024;
+}
+
+::selection {
+  background: rgba(217, 129, 78, 0.35);
+  color: #3e3227;
+}
+
+/* thin, quiet scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(92, 74, 56, 0.35);
+  border-radius: 8px;
+}
+
+/* handcrafted paper surface used across journal pages, boards, cards */
+.paper {
+  background-color: rgba(251, 246, 234, 0.92);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  border: 1px solid rgba(92, 74, 56, 0.14);
+}
+
+.paper-dark {
+  background-color: rgba(20, 28, 52, 0.72);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  border: 1px solid rgba(220, 228, 242, 0.14);
+}
+
+/* wooden board surface for skills */
+.wood {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.012 0.09' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23w)' opacity='0.16'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #8a6a4b 0%, #6f5238 55%, #5c4330 100%);
+  border: 1px solid rgba(62, 50, 39, 0.5);
+}
+
+/* ambient keyframes — all slow, all gentle */
+@keyframes drift {
+  from { transform: translateX(-12%); }
+  to   { transform: translateX(112%); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50%      { transform: rotate(1.6deg); }
+}
+
+@keyframes swayHard {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes ripple {
+  0%   { transform: scaleX(1);    opacity: 0.5; }
+  50%  { transform: scaleX(1.25); opacity: 0.2; }
+  100% { transform: scaleX(1);    opacity: 0.5; }
+}
+
+@keyframes lanternGlow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
