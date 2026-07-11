@@ -122,17 +122,22 @@ export const skillGroups = [
   {
     title: 'Backend',
     caption: 'the workbench',
-    items: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Celery', 'Docker'],
+    items: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Celery'],
   },
   {
     title: 'Machine Learning',
     caption: 'the field notes',
-    items: ['NumPy', 'Pandas', 'Scikit-learn', 'TensorFlow', 'PyTorch'],
+    items: ['NumPy', 'Pandas', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'OpenCV'],
   },
   {
-    title: 'Cloud & Tools',
+    title: 'Frontend',
+    caption: 'the shop window',
+    items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Bootstrap', 'HTML & CSS'],
+  },
+  {
+    title: 'Languages & Tools',
     caption: 'the travel kit',
-    items: ['AWS', 'Git', 'Linux'],
+    items: ['C++', 'Java', 'PHP', 'Git & GitHub', 'Docker', 'AWS', 'Linux', 'Postman'],
   },
 ]
 
@@ -141,12 +146,7 @@ export type FeaturedProject = {
   image: string
   tagline: string
   overview: string
-  problem: string
-  architecture: string
-  data: string
-  challenges: string
   impact: string
-  lesson: string
   stack: string[]
   github: string
   demo?: string
@@ -154,68 +154,65 @@ export type FeaturedProject = {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    name: 'NutriVision AI',
+    image: '/images/projects/nutrivision-ai.png',
+    tagline: 'my final-year college project',
+    overview:
+      'An AI-powered food nutritional analysis platform — upload a photo of your meal and a CNN (InceptionV3, trained on the India Food-20 dataset) identifies the dish and breaks down its calories, protein, carbs and fats. Comes with recipe recommendations, a barcode scanner, a community forum and NutriBot, a health chatbot.',
+    impact:
+      'Built end-to-end as my B.Sc. IT final project — Django backend, MongoDB, a TensorFlow/OpenCV model, and a complete product experience around it.',
+    stack: ['Django', 'TensorFlow', 'OpenCV', 'MongoDB', 'Tailwind CSS'],
+    github: 'https://github.com/laxmi-mehta/NutriVision-AI',
+  },
+  {
+    name: 'ML Algorithm Visualizer',
+    image: '/images/projects/ml-algo-visualizer.png',
+    tagline: 'learning machine learning by seeing it',
+    overview:
+      'An interactive Streamlit dashboard that turns classical ML into something you can play with — tune parameters and watch ten-plus algorithms (regression, KNN, SVM, random forests, K-Means, DBSCAN, PCA) redraw their decision boundaries live, plus concept demos for gradient descent, regularisation and overfitting.',
+    impact:
+      'Deployed live on Hugging Face Spaces with Docker — the tool I use to build and share ML intuition.',
+    stack: ['Python', 'Streamlit', 'Scikit-learn', 'Docker'],
+    github: 'https://github.com/laxmi-mehta/ml-algo-visualizer',
+    demo: 'https://laxmimehta-ml-algo-visualizer.hf.space/',
+  },
+  {
+    name: 'MediReminder AI',
+    image: '/images/projects/medireminder-ai.png',
+    tagline: 'so no dose is ever missed',
+    overview:
+      'A smart medication management system built for elderly patients juggling multiple prescriptions — scan a prescription with OCR, let AI flag dangerous drug interactions, and get smart reminders with full medication history tracking.',
+    impact:
+      'Turns a photo of a prescription into a managed medication schedule — OCR, AI interaction checks and reminders in one flow.',
+    stack: ['Python', 'OCR', 'AI Integration'],
+    github: 'https://github.com/laxmi-mehta/MediReminder-AI',
+  },
+  {
     name: 'Traffic Management with Reinforcement Learning',
     image: '/images/projects/traffic-management-ml.png',
-    tagline: 'Teaching an agent to untangle traffic',
+    tagline: 'teaching an agent to untangle traffic',
     overview:
       'A simulated traffic-control system where a reinforcement-learning agent learns signal timing policies that keep intersections flowing, visualised with live animations.',
-    problem:
-      'Fixed-timer traffic signals waste enormous time: they cannot react to real conditions. Could an agent learn adaptive signal control purely from experience?',
-    architecture:
-      'A Python simulation environment exposes intersection state (queue lengths, wait times) to a PPO agent. The agent proposes signal phases; the environment returns rewards based on total throughput and average wait. Training and evaluation loops are decoupled so learned policies can be replayed visually.',
-    data:
-      'State is engineered from simulated sensor readings — per-lane vehicle counts and cumulative waiting time — normalised into fixed-size observation vectors for the policy network.',
-    challenges:
-      'Reward shaping was the hard part: naive rewards taught the agent to starve side roads. Balancing throughput against fairness took many redesigns of the reward function.',
     impact:
-      'The trained policy consistently beat fixed-timer baselines on average wait time in simulation, and the project became the turning point of my move into ML.',
-    lesson: 'In RL, you get exactly the behaviour you reward — not the behaviour you intended.',
+      'The trained PPO policy consistently beat fixed-timer baselines on average wait time — and this project became the turning point of my move into ML.',
     stack: ['Python', 'PPO', 'Reinforcement Learning', 'NumPy'],
     github: 'https://github.com/laxmi-mehta/TrafficManagement-ML',
   },
   {
     name: 'Skin Disease Detection',
     image: '/images/projects/Django-app.png',
-    tagline: 'A CNN classifier, served like real software',
+    tagline: 'a CNN classifier, served like real software',
     overview:
       'A full web application that classifies skin conditions from uploaded photographs using a convolutional neural network, wrapped in a Django interface anyone can use.',
-    problem:
-      'Early screening of skin conditions is limited by access to specialists. An image classifier cannot replace a doctor, but it can offer a fast, private first signal.',
-    architecture:
-      'Django handles uploads, user flow and result presentation; a trained CNN runs inference server-side. Model loading is done once at startup so predictions stay fast, and the ML layer is isolated behind a clean service boundary.',
-    data:
-      'Trained on a labelled dermatology image dataset with augmentation (rotation, flips, colour jitter) to compensate for class imbalance and small sample sizes.',
-    challenges:
-      'Bridging two worlds: notebooks are forgiving, web servers are not. Handling arbitrary user images — sizes, formats, lighting — required a robust preprocessing pipeline before the model ever saw a pixel.',
     impact:
-      'Delivered an end-to-end ML product — dataset to deployed interface — and proved to myself that I could carry a model all the way into working software.',
-    lesson: 'The model is 20% of an ML product. The other 80% is engineering.',
+      'Delivered an end-to-end ML product — dataset to deployed interface — and proved I could carry a model all the way into working software.',
     stack: ['Python', 'Django', 'CNN', 'TensorFlow'],
     github: 'https://github.com/laxmi-mehta/skin-disease-detection-app',
-  },
-  {
-    name: 'Django REST API',
-    image: '/images/projects/django-restapi.png',
-    tagline: 'A clean, honest API — the backend fundamentals',
-    overview:
-      'A user-management REST API built to RESTful standards: create, read, update and delete operations with proper status codes, validation and serialization throughout.',
-    problem:
-      'Most tutorial APIs cut corners — no validation, vague errors, inconsistent responses. This project was an exercise in doing the fundamentals properly.',
-    architecture:
-      'Django REST Framework viewsets and serializers over a MongoDB Atlas store, with a clear separation between transport, validation and persistence layers.',
-    data:
-      'Document-oriented user schema on MongoDB Atlas, with serializer-level validation guarding every write path.',
-    challenges:
-      'Marrying Django’s relational assumptions with a document database meant being deliberate about where validation and integrity rules live.',
-    impact:
-      'Became my reference implementation — the patterns here (thin views, fat serializers, explicit errors) carried directly into my production work.',
-    lesson: 'An API is a promise. Keep it boring, keep it consistent.',
-    stack: ['Django', 'Django REST Framework', 'MongoDB Atlas'],
-    github: 'https://github.com/laxmi-mehta/django-rest-api',
   },
 ]
 
 export const otherProjects = [
+  { name: 'Django REST API', desc: 'User CRUD API built to RESTful standards with DRF and MongoDB Atlas.', tags: ['Django', 'DRF', 'MongoDB'], link: 'https://github.com/laxmi-mehta/django-rest-api' },
   { name: 'Music Website', desc: 'Modern music site with smooth animations.', tags: ['Next.js', 'Aceternity UI'], link: 'https://github.com/laxmi-mehta/music-website-nextjs' },
   { name: 'Real Estate Website', desc: 'Property listings with search and filtering.', tags: ['React'], link: 'https://real-estate-git-main-laxmi-mehtas-projects.vercel.app/' },
   { name: 'Fitness Club Website', desc: 'Workout plans and membership flows.', tags: ['React'], link: 'https://fitness-club-reactjs-git-main-laxmi-mehtas-projects.vercel.app/' },

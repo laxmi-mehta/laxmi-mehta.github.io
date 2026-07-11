@@ -9,7 +9,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading light kicker="carved into the workshop wall" title="The Craft" />
 
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
           {skillGroups.map((group, i) => (
             <Reveal key={group.title} delay={i * 0.18}>
               <div className="group relative h-full transition-transform duration-700 hover:-translate-y-2">
