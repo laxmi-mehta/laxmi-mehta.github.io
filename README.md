@@ -1,10 +1,14 @@
 # Laxmi Mehta — Portfolio
 
+[![Deploy to GitHub Pages](https://github.com/laxmi-mehta/laxmi-mehta.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/laxmi-mehta/laxmi-mehta.github.io/actions/workflows/deploy.yml)
+
 A story-driven portfolio built as one continuous journey: the page starts at
 sunrise and slowly walks into a moonlit night as you scroll. Every section is
 a scene along the way — meadow, journal, trail, workshop, lake.
 
 **Live:** https://laxmi-mehta.github.io/
+
+![Preview](.github/preview.png)
 
 ## Tech
 

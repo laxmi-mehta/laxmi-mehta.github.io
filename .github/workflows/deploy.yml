@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      # npm install instead of npm ci — the lockfile comes from windows and
+      # npm ci trips over platform-specific optional packages on linux
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: actions/configure-pages@v5
         with:
