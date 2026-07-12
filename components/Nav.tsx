@@ -20,7 +20,7 @@ export default function Nav() {
       <motion.header
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4, delay: 2.2, ease: 'easeOut' }}
+        transition={{ duration: 1.2, delay: 1.2, ease: 'easeOut' }}
         className="pointer-events-none fixed inset-x-0 top-0 z-40 mix-blend-difference"
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-white">

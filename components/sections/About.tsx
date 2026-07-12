@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion'
-import { aboutHighlights, aboutMe, profile } from '@/data/content'
+import { aboutMe, profile } from '@/data/content'
 import { Marked, Reveal, SectionHeading } from '@/components/ui'
 
 function Butterfly({ className, delay }: { className: string; delay: number }) {
@@ -37,24 +37,6 @@ export default function About() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading kicker="pages from an explorer's journal" title="The Story So Far" />
 
-        {/* the numbers behind the work I ship every day */}
-        <div className="mb-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          {aboutHighlights.map((h, i) => (
-            <Reveal key={h.label} delay={i * 0.1}>
-              <div
-                className={`paper rounded-sm px-4 py-6 text-center shadow-float transition-transform duration-700 hover:-translate-y-2 ${
-                  i % 2 ? 'md:rotate-[0.5deg]' : 'md:-rotate-[0.5deg]'
-                } hover:rotate-0`}
-              >
-                <p className="font-heading text-3xl text-ember md:text-4xl">{h.value}</p>
-                <p className="mt-2 text-[10px] font-semibold uppercase tracking-wideish text-bark/70 md:text-[11px]">
-                  {h.label}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
         <div className="grid gap-10 lg:grid-cols-[2fr,3fr] lg:gap-16">
           {/* the traveller — photo stays with you while the journal scrolls */}
           <div className="space-y-8 self-start lg:sticky lg:top-24">
@@ -64,8 +46,8 @@ export default function About() {
                 <span className="absolute -top-3 right-8 z-10 h-6 w-16 rotate-[-4deg] bg-ember/25 backdrop-blur-[1px]" />
                 <div className="overflow-hidden rounded-sm">
                   <img
-                    src="/images/profile2.jpg"
-                    alt="Laxmi Mehta"
+                    src={profile.photo}
+                    alt={profile.name}
                     loading="lazy"
                     className="aspect-[4/5] w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-105"
                   />

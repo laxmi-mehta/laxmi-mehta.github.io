@@ -3,9 +3,11 @@
 // the site — no component changes needed.
 // ─────────────────────────────────────────────────────────────
 
+// on GitHub Pages the site lives under /Portfolio, locally at the root
+const base = process.env.NODE_ENV === 'production' ? '/Portfolio' : ''
+
 export const profile = {
   name: 'Laxmi Mehta',
-  role: 'Backend Engineer',
   company: 'Adhyay Infotech Pvt. Ltd.',
   // rotating profiles shown large in the hero
   roles: ['Backend Developer', 'Django & DRF Developer', 'Aspiring ML Engineer', 'Database Craftsman'],
@@ -15,17 +17,10 @@ export const profile = {
   location: 'Mumbai, India',
   email: 'admin@onlydairy.in',
   github: 'https://github.com/laxmi-mehta',
-  linkedin: 'https://www.linkedin.com/in/laxmi-mehta',
-  resume: '/resume.pdf',
+  linkedin: 'https://www.linkedin.com/in/laxmi-mehta-/',
+  resume: `${base}/resume.pdf`,
+  photo: `${base}/images/profile-image.jpg`,
 }
-
-// numbers from the Mobile Dairy platform I work on at Adhyay Infotech
-export const aboutHighlights = [
-  { value: '100k+', label: 'App Downloads' },
-  { value: '4.9★', label: 'Play Store Rating' },
-  { value: '64+', label: 'Reports Powered' },
-  { value: '10k+', label: 'Dairy Centers Served' },
-]
 
 // the single about-me page, one paragraph per entry (**term** renders highlighted)
 export const aboutMe = [
@@ -56,12 +51,29 @@ export const education = [
   },
 ]
 
-export const milestones = [
+export type Milestone = {
+  marker: string
+  time: string
+  role: string
+  place: string
+  summary: string
+  details: string[]
+  lesson: string
+  stats?: { value: string; label: string }[]
+}
+
+export const milestones: Milestone[] = [
   {
     marker: 'I',
     time: 'May 2025 — Present · Full-time',
     role: 'Backend Developer · Adhyay Infotech Pvt. Ltd.',
     place: 'Mumbai, India',
+    stats: [
+      { value: '100k+', label: 'App Downloads' },
+      { value: '4.9★', label: 'Play Store Rating' },
+      { value: '64+', label: 'Reports Powered' },
+      { value: '10k+', label: 'Dairy Centers Served' },
+    ],
     summary:
       'Developing and maintaining backend features for a **large-scale dairy management platform** serving **10,000+ dairy centers** — scalable REST APIs, complex business rules and the reporting engine behind daily operations.',
     details: [
@@ -143,7 +155,7 @@ export type FeaturedProject = {
 export const featuredProjects: FeaturedProject[] = [
   {
     name: 'Mobile Dairy — Dairy Management Platform',
-    image: '/images/projects/mobile-dairy.png',
+    image: `${base}/images/projects/mobile-dairy.png`,
     tagline: 'what I build at work, every day',
     overview:
       'India’s most popular milk-collection software — a multi-tenant platform for dairy cooperatives, collection centres and dairy plants, covering milk collection, quality-based billing, dispatch, inventory and payments. I work on its Django backend: REST APIs, business workflows and the reporting modules behind daily operations.',
@@ -159,7 +171,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'NutriVision AI',
-    image: '/images/projects/nutrivision-ai.png',
+    image: `${base}/images/projects/nutrivision-ai.png`,
     tagline: 'my final-year college project',
     overview:
       'An AI-powered food nutritional analysis platform — upload a photo of your meal and a CNN (InceptionV3, trained on the India Food-20 dataset) identifies the dish and breaks down its calories, protein, carbs and fats. Comes with recipe recommendations, a barcode scanner, a community forum and NutriBot, a health chatbot.',
@@ -170,7 +182,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'ML Algorithm Visualizer',
-    image: '/images/projects/ml-algo-visualizer.png',
+    image: `${base}/images/projects/ml-algo-visualizer.png`,
     tagline: 'learning machine learning by seeing it',
     overview:
       'An interactive Streamlit dashboard that turns classical ML into something you can play with — tune parameters and watch ten-plus algorithms (regression, KNN, SVM, random forests, K-Means, DBSCAN, PCA) redraw their decision boundaries live, plus concept demos for gradient descent, regularisation and overfitting.',
@@ -182,7 +194,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'MediReminder AI',
-    image: '/images/projects/medireminder-ai.png',
+    image: `${base}/images/projects/medireminder-ai.png`,
     tagline: 'so no dose is ever missed',
     overview:
       'A smart medication management system built for elderly patients juggling multiple prescriptions — scan a prescription with OCR, let AI flag dangerous drug interactions, and get smart reminders with full medication history tracking.',
@@ -193,7 +205,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'Traffic Management with Reinforcement Learning',
-    image: '/images/projects/traffic-management-ml.png',
+    image: `${base}/images/projects/traffic-management-ml.png`,
     tagline: 'teaching an agent to untangle traffic',
     overview:
       'A simulated traffic-control system where a reinforcement-learning agent learns signal timing policies that keep intersections flowing, visualised with live animations.',
@@ -204,7 +216,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'Skin Disease Detection',
-    image: '/images/projects/Django-app.png',
+    image: `${base}/images/projects/skin-disease-detection.png`,
     tagline: 'a CNN classifier, served like real software',
     overview:
       'A full web application that classifies skin conditions from uploaded photographs using a convolutional neural network, wrapped in a Django interface anyone can use.',

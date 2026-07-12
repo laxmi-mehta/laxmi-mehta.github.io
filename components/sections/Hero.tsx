@@ -197,7 +197,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.6, delay: 0.4 }}
+          transition={{ duration: 1.1, delay: 0.15 }}
           className="font-hand text-2xl text-bark/80 md:text-3xl"
         >
           somewhere above the morning mist —
@@ -211,7 +211,7 @@ export default function Hero() {
               className="inline-block"
               initial={{ opacity: 0, y: 26, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1, delay: 0.8 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1, delay: 0.3 + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
             >
               {ch === ' ' ? ' ' : ch}
             </motion.span>
@@ -221,14 +221,14 @@ export default function Hero() {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.4, delay: 1.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 h-px w-28 bg-bark/40"
         />
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.1 }}
+          transition={{ duration: 1, delay: 1 }}
           className="mt-8"
         >
           <div className="flex flex-wrap items-baseline justify-center gap-x-3 font-heading text-2xl sm:text-3xl md:text-5xl">
@@ -256,7 +256,7 @@ export default function Hero() {
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.3 }}
+          transition={{ duration: 1, delay: 1.15 }}
           className="mt-4 font-heading text-2xl font-light italic leading-relaxed text-soil/90 md:text-4xl"
         >
           {profile.headline[0]}
@@ -267,7 +267,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.55 }}
+          transition={{ duration: 1, delay: 1.3 }}
           className="mt-6 max-w-xl text-base leading-relaxed text-bark/80 md:text-lg"
         >
           {profile.subheading}
@@ -276,7 +276,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.8 }}
+          transition={{ duration: 1, delay: 1.45 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <a
@@ -325,8 +325,8 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.6, delay: 3.4 }}
-        className="absolute bottom-40 left-1/2 z-10 -translate-x-1/2 text-center"
+        transition={{ duration: 1.2, delay: 1.9 }}
+        className="absolute bottom-44 left-1/2 z-30 -translate-x-1/2 text-center"
       >
         <p className="font-hand text-xl text-bark/70">walk with me</p>
         <motion.div

@@ -16,10 +16,6 @@ body {
   overflow-x: hidden;
 }
 
-.dark body {
-  background-color: #0a1024;
-}
-
 ::selection {
   background: rgba(217, 129, 78, 0.35);
   color: #3e3227;
