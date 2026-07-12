@@ -3,8 +3,6 @@
 // the site — no component changes needed.
 // ─────────────────────────────────────────────────────────────
 
-// on GitHub Pages the site lives under /Portfolio, locally at the root
-const base = process.env.NODE_ENV === 'production' ? '/Portfolio' : ''
 
 export const profile = {
   name: 'Laxmi Mehta',
@@ -18,8 +16,8 @@ export const profile = {
   email: 'admin@onlydairy.in',
   github: 'https://github.com/laxmi-mehta',
   linkedin: 'https://www.linkedin.com/in/laxmi-mehta-/',
-  resume: `${base}/resume.pdf`,
-  photo: `${base}/images/profile-image.jpg`,
+  resume: '/resume.pdf',
+  photo: '/images/profile-image.jpg',
 }
 
 // the single about-me page, one paragraph per entry (**term** renders highlighted)
@@ -155,7 +153,7 @@ export type FeaturedProject = {
 export const featuredProjects: FeaturedProject[] = [
   {
     name: 'Mobile Dairy — Dairy Management Platform',
-    image: `${base}/images/projects/mobile-dairy.png`,
+    image: '/images/projects/mobile-dairy.png',
     tagline: 'what I build at work, every day',
     overview:
       'India’s most popular milk-collection software — a multi-tenant platform for dairy cooperatives, collection centres and dairy plants, covering milk collection, quality-based billing, dispatch, inventory and payments. I work on its Django backend: REST APIs, business workflows and the reporting modules behind daily operations.',
@@ -171,7 +169,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'NutriVision AI',
-    image: `${base}/images/projects/nutrivision-ai.png`,
+    image: '/images/projects/nutrivision-ai.png',
     tagline: 'my final-year college project',
     overview:
       'An AI-powered food nutritional analysis platform — upload a photo of your meal and a CNN (InceptionV3, trained on the India Food-20 dataset) identifies the dish and breaks down its calories, protein, carbs and fats. Comes with recipe recommendations, a barcode scanner, a community forum and NutriBot, a health chatbot.',
@@ -182,7 +180,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'ML Algorithm Visualizer',
-    image: `${base}/images/projects/ml-algo-visualizer.png`,
+    image: '/images/projects/ml-algo-visualizer.png',
     tagline: 'learning machine learning by seeing it',
     overview:
       'An interactive Streamlit dashboard that turns classical ML into something you can play with — tune parameters and watch ten-plus algorithms (regression, KNN, SVM, random forests, K-Means, DBSCAN, PCA) redraw their decision boundaries live, plus concept demos for gradient descent, regularisation and overfitting.',
@@ -194,7 +192,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'MediReminder AI',
-    image: `${base}/images/projects/medireminder-ai.png`,
+    image: '/images/projects/medireminder-ai.png',
     tagline: 'so no dose is ever missed',
     overview:
       'A smart medication management system built for elderly patients juggling multiple prescriptions — scan a prescription with OCR, let AI flag dangerous drug interactions, and get smart reminders with full medication history tracking.',
@@ -205,7 +203,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'Traffic Management with Reinforcement Learning',
-    image: `${base}/images/projects/traffic-management-ml.png`,
+    image: '/images/projects/traffic-management-ml.png',
     tagline: 'teaching an agent to untangle traffic',
     overview:
       'A simulated traffic-control system where a reinforcement-learning agent learns signal timing policies that keep intersections flowing, visualised with live animations.',
@@ -216,7 +214,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     name: 'Skin Disease Detection',
-    image: `${base}/images/projects/skin-disease-detection.png`,
+    image: '/images/projects/skin-disease-detection.png',
     tagline: 'a CNN classifier, served like real software',
     overview:
       'A full web application that classifies skin conditions from uploaded photographs using a convolutional neural network, wrapped in a Django interface anyone can use.',
