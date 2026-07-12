@@ -57,7 +57,6 @@ export type Milestone = {
   summary: string
   details: string[]
   lesson: string
-  stats?: { value: string; label: string }[]
 }
 
 export const milestones: Milestone[] = [
@@ -66,12 +65,6 @@ export const milestones: Milestone[] = [
     time: 'May 2025 — Present · Full-time',
     role: 'Backend Developer · Adhyay Infotech Pvt. Ltd.',
     place: 'Mumbai, India',
-    stats: [
-      { value: '100k+', label: 'App Downloads' },
-      { value: '4.9★', label: 'Play Store Rating' },
-      { value: '64+', label: 'Reports Powered' },
-      { value: '10k+', label: 'Dairy Centers Served' },
-    ],
     summary:
       'Developing and maintaining backend features for a **large-scale dairy management platform** serving **10,000+ dairy centers** — scalable REST APIs, complex business rules and the reporting engine behind daily operations.',
     details: [

@@ -98,7 +98,18 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* far dawn ridges */}
+      {/* a wide, soft sunrise halo behind the headline */}
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-[26%] h-[560px] w-[560px] -translate-x-1/2 rounded-full md:h-[720px] md:w-[720px]"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(255,236,190,0.55) 0%, rgba(255,224,166,0.28) 40%, rgba(255,214,140,0) 70%)',
+          animation: 'lanternGlow 9s ease-in-out infinite',
+        }}
+      />
+
+      {/* sharp peaks rising above the cloud sea */}
       <motion.svg
         viewBox="0 0 1440 420"
         preserveAspectRatio="xMidYMax slice"
@@ -106,44 +117,39 @@ export default function Hero() {
         style={{ y: farY }}
       >
         <path
-          d="M0 420 L0 300 Q 90 210 190 250 Q 240 180 340 150 Q 430 120 520 210 Q 600 160 700 190 Q 780 90 900 130 Q 990 60 1090 160 Q 1180 120 1260 200 Q 1350 170 1440 250 L1440 420 Z"
-          fill="#B0A6C9"
-          opacity="0.5"
+          d="M0 420 L0 260 L120 170 L210 240 L330 90 L440 210 L520 160 L640 250 L760 60 L880 220 L980 140 L1100 260 L1200 120 L1320 230 L1440 180 L1440 420 Z"
+          fill="#A9A0C6"
+          opacity="0.45"
         />
         <path
-          d="M0 420 L0 340 Q 120 260 240 300 Q 340 230 470 280 Q 560 220 680 270 Q 800 190 920 260 Q 1040 210 1150 280 Q 1280 230 1440 310 L1440 420 Z"
-          fill="#C09AA4"
-          opacity="0.55"
+          d="M0 420 L0 330 L160 250 L280 320 L420 180 L560 310 L700 240 L840 330 L980 200 L1120 320 L1260 260 L1440 340 L1440 420 Z"
+          fill="#C79AA6"
+          opacity="0.5"
         />
       </motion.svg>
 
-      {/* a calm sunrise lake behind the hills */}
+      {/* the sea of clouds the peaks float in */}
       <motion.div
         aria-hidden
-        className="absolute bottom-16 left-0 h-24 w-full md:bottom-10"
+        className="absolute bottom-14 left-0 h-32 w-full md:bottom-8"
         style={{ y: midY }}
       >
-        <div className="h-full w-full bg-gradient-to-b from-[#F6E2BB]/90 via-[#F0D3A6]/80 to-[#E5C193]/70" />
-        {/* the sun's reflection on the water */}
-        <div
-          className="absolute left-[16%] top-[30%] h-2.5 w-44 -translate-x-1/2 rounded-full bg-white/60 blur-[3px]"
-          style={{ animation: 'ripple 6s ease-in-out infinite' }}
-        />
-        <div
-          className="absolute left-[16%] top-[58%] h-1.5 w-28 -translate-x-1/2 rounded-full bg-white/40 blur-[2px]"
-          style={{ animation: 'ripple 8s ease-in-out 1s infinite' }}
-        />
-        {[0, 1, 2].map((i) => (
+        {[
+          { top: 0, width: '70%', speed: 210, delay: -40, opacity: 0.5 },
+          { top: 26, width: '85%', speed: 160, delay: -110, opacity: 0.65 },
+          { top: 52, width: '75%', speed: 185, delay: -20, opacity: 0.75 },
+          { top: 76, width: '90%', speed: 140, delay: -90, opacity: 0.85 },
+        ].map((band, i) => (
           <div
             key={i}
-            className="absolute h-px rounded-full bg-white/30"
-            style={{
-              left: `${38 + i * 20}%`,
-              top: `${34 + i * 20}%`,
-              width: 70 - i * 14,
-              animation: `ripple ${5 + i * 1.6}s ease-in-out ${i * 0.9}s infinite`,
-            }}
-          />
+            className="absolute left-0 w-full"
+            style={{ top: band.top, animation: `drift ${band.speed}s linear ${band.delay}s infinite` }}
+          >
+            <div
+              className="h-10 rounded-full bg-gradient-to-r from-white/0 via-white to-white/0 blur-xl md:h-12"
+              style={{ width: band.width, opacity: band.opacity }}
+            />
+          </div>
         ))}
       </motion.div>
 

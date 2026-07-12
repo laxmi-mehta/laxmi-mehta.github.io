@@ -53,21 +53,6 @@ export default function Journey() {
                       <p className="mt-4 leading-relaxed text-bark/90">
                         <Marked text={m.summary} />
                       </p>
-                      {m.stats && (
-                        <div className="mt-5 grid grid-cols-2 gap-3">
-                          {m.stats.map((s) => (
-                            <div
-                              key={s.label}
-                              className="rounded-sm border border-ember/25 bg-ember/10 px-3 py-3.5 text-center transition-transform duration-500 hover:-translate-y-1"
-                            >
-                              <p className="font-heading text-2xl text-ember">{s.value}</p>
-                              <p className="mt-1 text-[10px] font-semibold uppercase tracking-wideish text-bark/70">
-                                {s.label}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      )}
                       <ul className="mt-5 space-y-2.5">
                         {m.details.map((d) => (
                           <li key={d} className="flex gap-3 text-sm leading-relaxed text-bark/85">
