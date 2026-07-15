@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 // renders text with **term** markers as highlighted words
-export function Marked({ text, accent = 'text-ember' }: { text: string; accent?: string }) {
+export function Marked({ text, accent = 'text-rail' }: { text: string; accent?: string }) {
   const parts = text.split(/\*\*(.+?)\*\*/g)
   return (
     <>
@@ -45,37 +45,33 @@ export function Reveal({
   )
 }
 
+// every section begins at a station — yellow enamel board, station code and all
 export function SectionHeading({
+  code,
   kicker,
   title,
-  light = false,
 }: {
+  code: string
   kicker: string
   title: string
-  light?: boolean
 }) {
   return (
-    <div className="mb-10 text-center md:mb-14">
+    <div className="mb-12 text-center md:mb-16">
       <Reveal>
-        <p
-          className={`font-hand text-2xl md:text-3xl ${light ? 'text-lantern/90' : 'text-ember'}`}
-        >
-          {kicker}
-        </p>
+        <p className="font-hand text-2xl text-chai md:text-3xl">{kicker}</p>
       </Reveal>
       <Reveal delay={0.15}>
-        <h2
-          className={`mt-2 font-heading text-4xl font-light tracking-tight md:text-6xl ${
-            light ? 'text-moonsilver' : 'text-soil'
-          }`}
-        >
-          {title}
-        </h2>
+        <div className="station-board mx-auto mt-4 inline-block rounded-lg px-8 py-4 md:px-12 md:py-5">
+          <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/70">
+            station {code}
+          </p>
+          <h2 className="mt-1 font-heading text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+            {title}
+          </h2>
+        </div>
       </Reveal>
       <Reveal delay={0.3}>
-        <div
-          className={`mx-auto mt-6 h-px w-24 ${light ? 'bg-moonsilver/30' : 'bg-bark/30'}`}
-        />
+        <div className="track mx-auto mt-6 w-40 opacity-40" />
       </Reveal>
     </div>
   )

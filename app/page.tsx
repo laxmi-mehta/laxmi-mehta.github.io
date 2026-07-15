@@ -1,6 +1,5 @@
 import SmoothScroll from '@/components/SmoothScroll'
-import Sky from '@/components/Sky'
-import Atmosphere from '@/components/Atmosphere'
+import RouteRail from '@/components/RouteRail'
 import Nav from '@/components/Nav'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
@@ -14,8 +13,7 @@ import Contact from '@/components/sections/Contact'
 export default function Home() {
   return (
     <SmoothScroll>
-      <Sky />
-      <Atmosphere />
+      <RouteRail />
       <Nav />
       <main className="relative">
         <Hero />

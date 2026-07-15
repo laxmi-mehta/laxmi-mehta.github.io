@@ -6,6 +6,7 @@
 
 export const profile = {
   name: 'Laxmi Mehta',
+  nameHindi: 'लक्ष्मी मेहता',
   company: 'Adhyay Infotech Pvt. Ltd.',
   // rotating profiles shown large in the hero
   roles: ['Backend Developer', 'Django & DRF Developer', 'Aspiring ML Engineer', 'Database Craftsman'],
@@ -111,22 +112,22 @@ export const milestones: Milestone[] = [
 export const skillGroups = [
   {
     title: 'Backend',
-    caption: 'the workbench',
+    caption: 'the main line',
     items: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Celery'],
   },
   {
     title: 'Machine Learning',
-    caption: 'the field notes',
+    caption: 'the new line',
     items: ['NumPy', 'Pandas', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'OpenCV'],
   },
   {
     title: 'Frontend',
-    caption: 'the shop window',
+    caption: 'the harbour line',
     items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Bootstrap', 'HTML & CSS'],
   },
   {
     title: 'Languages & Tools',
-    caption: 'the travel kit',
+    caption: 'the utility line',
     items: ['C++', 'Java', 'PHP', 'Git & GitHub', 'Docker', 'AWS', 'Linux', 'Postman'],
   },
 ]

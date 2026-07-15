@@ -3,32 +3,43 @@
 import { education } from '@/data/content'
 import { Reveal, SectionHeading } from '@/components/ui'
 
+// each qualification is an old cardboard season pass
 export default function Education() {
   return (
     <section id="education" className="relative z-10 px-6 py-16 md:py-24">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading kicker="the miles before the trail" title="Education" />
+        <SectionHeading code="02" kicker="tickets collected on the way" title="Education" />
 
         <div className="grid gap-8 md:grid-cols-3">
           {education.map((e, i) => (
             <Reveal key={e.degree} delay={i * 0.15}>
               <article
-                className={`paper group relative h-full rounded-sm p-8 text-center shadow-float transition-transform duration-700 hover:-translate-y-2 ${
+                className={`ticket-card group relative h-full rounded-sm p-7 shadow-float transition-transform duration-700 hover:-translate-y-2 ${
                   i % 2 ? 'md:rotate-[0.6deg]' : 'md:-rotate-[0.6deg]'
                 } hover:rotate-0`}
               >
-                {/* wax-seal style score badge */}
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-ember/40 bg-ember/10 font-hand text-lg leading-tight text-ember">
-                  {e.score}
-                </div>
-                <p className="mt-5 text-[11px] font-semibold uppercase tracking-wideish text-ember">
-                  {e.years}
+                {/* punched hole */}
+                <span className="absolute right-4 top-4 h-3.5 w-3.5 rounded-full border border-ink/40 bg-cream shadow-inner" />
+
+                <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/55">
+                  education pass · {e.years}
                 </p>
-                <h3 className="mt-2 font-heading text-xl font-medium text-soil md:text-2xl">
+                <h3 className="mt-3 font-heading text-xl font-semibold text-ink md:text-2xl">
                   {e.degree}
                 </h3>
-                <div className="mx-auto mt-3 h-px w-10 bg-bark/25 transition-all duration-700 group-hover:w-16" />
-                <p className="mt-3 font-hand text-xl text-bark/75">{e.school}</p>
+                <p className="mt-1 font-hand text-xl text-ink/70">{e.school}</p>
+
+                <div className="my-4 border-t border-dashed border-ink/30" />
+
+                <div className="flex items-center justify-between">
+                  <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/55">
+                    final score
+                  </p>
+                  {/* rubber-stamped result */}
+                  <p className="rotate-[-4deg] rounded-sm border-2 border-rail px-2.5 py-1 text-sm font-bold text-rail transition-transform duration-500 group-hover:rotate-0">
+                    {e.score}
+                  </p>
+                </div>
               </article>
             </Reveal>
           ))}

@@ -4,26 +4,6 @@ import { useState, type FormEvent } from 'react'
 import { profile, closingQuote } from '@/data/content'
 import { Reveal, SectionHeading } from '@/components/ui'
 
-function Lantern({ className, delay }: { className: string; delay: number }) {
-  return (
-    <div aria-hidden className={`absolute ${className}`}>
-      <svg width="46" height="120" viewBox="0 0 46 120">
-        <line x1="23" y1="0" x2="23" y2="34" stroke="#8894B3" strokeWidth="2" opacity="0.5" />
-        <g style={{ animation: `sway ${6 + delay}s ease-in-out ${delay}s infinite`, transformOrigin: '23px 34px' }}>
-          <rect x="14" y="34" width="18" height="6" rx="2" fill="#3E3227" />
-          <path d="M12 40 L34 40 L31 72 L15 72 Z" fill="#2A2118" />
-          <rect x="16" y="44" width="14" height="24" rx="3" fill="#FFD9A0" style={{ animation: `lanternGlow ${3 + delay}s ease-in-out infinite` }} />
-          <rect x="17" y="72" width="12" height="5" rx="2" fill="#3E3227" />
-        </g>
-      </svg>
-      <div
-        className="absolute left-1/2 top-14 h-16 w-16 -translate-x-1/2 rounded-full bg-lantern/25 blur-2xl"
-        style={{ animation: `lanternGlow ${3 + delay}s ease-in-out infinite` }}
-      />
-    </div>
-  )
-}
-
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
@@ -35,24 +15,22 @@ export default function Contact() {
   }
 
   const field =
-    'w-full rounded-sm border border-moonsilver/20 bg-midnight/50 px-4 py-3 text-sm text-moonsilver placeholder:text-moonsilver/40 outline-none backdrop-blur-sm transition-colors focus:border-lantern/60'
+    'w-full rounded-sm border border-ink/30 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 outline-none transition-colors focus:border-rail'
 
   return (
     <section id="contact" className="relative z-10 overflow-hidden px-6 pb-0 pt-16 md:pt-24">
-      <Lantern className="left-[6%] top-40 hidden lg:block" delay={0.4} />
-      <Lantern className="right-[7%] top-56 hidden lg:block" delay={1.6} />
-
-      <div className="mx-auto max-w-2xl pb-24 text-center md:pb-28">
-        <SectionHeading light kicker="where the water meets the night" title="Rest Here a While" />
+      <div className="mx-auto max-w-2xl pb-20 text-center md:pb-24">
+        <SectionHeading code="07" kicker="all change — end of the line" title="Terminus" />
 
         <Reveal>
-          <p className="font-heading text-xl font-light italic leading-relaxed text-moonsilver/90 md:text-2xl">
+          <p className="font-heading text-xl font-light italic leading-relaxed text-ink/85 md:text-2xl">
             “{closingQuote}”
           </p>
         </Reveal>
 
+        {/* platform signs pointing everywhere I can be found */}
         <Reveal delay={0.15}>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {[
               { label: 'Email', href: `mailto:${profile.email}` },
               { label: 'GitHub', href: profile.github },
@@ -64,78 +42,79 @@ export default function Contact() {
                 href={l.href}
                 target={l.href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
-                className="rounded-full border border-moonsilver/30 px-6 py-2.5 text-sm text-moonsilver transition-all duration-500 hover:-translate-y-1 hover:border-lantern/70 hover:text-lantern hover:shadow-lantern"
+                className="rounded-md border-2 border-ink bg-ink px-5 py-2 text-xs font-bold uppercase tracking-wider text-board transition-all duration-300 hover:-translate-y-1 hover:bg-rail hover:text-cream"
               >
-                {l.label}
+                {l.label} →
               </a>
             ))}
           </div>
         </Reveal>
 
+        {/* the ticket window */}
         <Reveal delay={0.25}>
-          <form onSubmit={submit} className="mx-auto mt-14 max-w-lg space-y-4 text-left">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                required
-                className={field}
-                placeholder="Your name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
-              <input
-                required
-                type="email"
-                className={field}
-                placeholder="Your email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+          <div className="paper mx-auto mt-12 max-w-lg rounded-sm text-left shadow-float">
+            <div className="flex items-center justify-between rounded-t-sm border-b-2 border-ink/70 bg-board px-6 py-2.5">
+              <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/80">
+                ticket window · leave a message
+              </p>
+              <span
+                className="h-2 w-2 rounded-full bg-signal"
+                style={{ animation: 'blink 2s ease-in-out infinite' }}
               />
             </div>
-            <textarea
-              required
-              rows={5}
-              className={field}
-              placeholder="Leave a note by the water…"
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-            />
-            <button
-              type="submit"
-              className="w-full rounded-full bg-lantern px-8 py-3.5 text-sm font-semibold text-soil transition-transform duration-500 hover:-translate-y-1"
-            >
-              Send the message
-            </button>
-          </form>
+            <form onSubmit={submit} className="space-y-4 p-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  required
+                  className={field}
+                  placeholder="Your name"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                />
+                <input
+                  required
+                  type="email"
+                  className={field}
+                  placeholder="Your email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+              </div>
+              <textarea
+                required
+                rows={5}
+                className={field}
+                placeholder="Where should we travel together?"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+              />
+              <button
+                type="submit"
+                className="w-full rounded-md border-2 border-ink bg-board px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-transform duration-300 hover:-translate-y-1"
+              >
+                Send the message
+              </button>
+            </form>
+          </div>
         </Reveal>
       </div>
 
-      {/* the still lake at the end of the journey */}
-      <div aria-hidden className="pointer-events-none relative h-56 w-full md:h-72">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d1730]/80 to-[#070d1e]" />
-        {/* moon reflection */}
-        <div
-          className="absolute left-1/2 top-10 h-40 w-10 -translate-x-1/2 rounded-full bg-moonsilver/20 blur-md md:h-52"
-          style={{ animation: 'ripple 7s ease-in-out infinite' }}
-        />
-        {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="absolute left-1/2 h-px -translate-x-1/2 rounded-full bg-moonsilver/30"
-            style={{
-              top: `${28 + i * 18}%`,
-              width: `${120 - i * 22}px`,
-              animation: `ripple ${5 + i * 1.5}s ease-in-out ${i * 0.8}s infinite`,
-            }}
-          />
-        ))}
+      {/* buffer stop at the very end of the track */}
+      <div aria-hidden className="mx-auto max-w-md pb-10">
+        <div className="track w-full opacity-50" />
+        <div className="mx-auto mt-2 flex w-24 items-end justify-center gap-1">
+          <span className="h-6 w-2 rounded-t-sm bg-rail" />
+          <span className="h-9 w-14 rounded-t-md border-4 border-ink bg-board" />
+          <span className="h-6 w-2 rounded-t-sm bg-rail" />
+        </div>
       </div>
 
-      <footer className="relative z-10 border-t border-moonsilver/10 bg-[#070d1e] px-6 py-10 text-center">
-        <p className="font-hand text-xl text-moonsilver/70">
-          handcrafted by {profile.name} · {new Date().getFullYear()}
+      <footer className="relative z-10 border-t-4 border-board bg-ink px-6 py-8 text-center">
+        <p className="font-hand text-xl text-cream/80">
+          made in Mumbai, between stations · {profile.name} · {new Date().getFullYear()}
         </p>
-        <p className="mt-2 text-xs text-moonsilver/40">
-          The journey continues — thank you for walking it with me.
+        <p className="mt-2 text-[11px] uppercase tracking-wideish text-cream/40">
+          yeh station aakhri hai — but every journey starts somewhere
         </p>
       </footer>
     </section>
