@@ -15,22 +15,21 @@ export default function Contact() {
   }
 
   const field =
-    'w-full rounded-sm border border-ink/30 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 outline-none transition-colors focus:border-rail'
+    'w-full rounded-sm border border-ink/25 bg-paper px-4 py-3 text-sm text-ink placeholder:text-mist/70 outline-none transition-colors focus:border-accent'
 
   return (
-    <section id="contact" className="relative z-10 overflow-hidden px-6 pb-0 pt-16 md:pt-24">
-      <div className="mx-auto max-w-2xl pb-20 text-center md:pb-24">
-        <SectionHeading code="07" kicker="all change — end of the line" title="Terminus" />
+    <section id="contact" className="relative z-10 px-6 pb-0 pt-16 md:pt-24">
+      <div className="mx-auto max-w-3xl pb-20 md:pb-24">
+        <SectionHeading code="07" kicker="contact" title="Let's Talk" />
 
         <Reveal>
-          <p className="font-heading text-xl font-light italic leading-relaxed text-ink/85 md:text-2xl">
+          <p className="max-w-xl font-heading text-xl font-light italic leading-relaxed text-ink/80 md:text-2xl">
             “{closingQuote}”
           </p>
         </Reveal>
 
-        {/* platform signs pointing everywhere I can be found */}
-        <Reveal delay={0.15}>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <Reveal delay={0.12}>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             {[
               { label: 'Email', href: `mailto:${profile.email}` },
               { label: 'GitHub', href: profile.github },
@@ -42,25 +41,18 @@ export default function Contact() {
                 href={l.href}
                 target={l.href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
-                className="rounded-md border-2 border-ink bg-ink px-5 py-2 text-xs font-bold uppercase tracking-wider text-board transition-all duration-300 hover:-translate-y-1 hover:bg-rail hover:text-cream"
+                className="rounded-md border border-ink/25 px-5 py-2 font-mono text-xs font-semibold text-ink/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
               >
-                {l.label} →
+                {l.label} ↗
               </a>
             ))}
           </div>
         </Reveal>
 
-        {/* the ticket window */}
-        <Reveal delay={0.25}>
-          <div className="paper mx-auto mt-12 max-w-lg rounded-sm text-left shadow-float">
-            <div className="flex items-center justify-between rounded-t-sm border-b-2 border-ink/70 bg-board px-6 py-2.5">
-              <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/80">
-                ticket window · leave a message
-              </p>
-              <span
-                className="h-2 w-2 rounded-full bg-signal"
-                style={{ animation: 'blink 2s ease-in-out infinite' }}
-              />
+        <Reveal delay={0.2}>
+          <div className="sheet mt-10 max-w-xl rounded-md shadow-lift">
+            <div className="border-b border-ink/10 px-6 py-3">
+              <p className="annotation">fig. 07.1 — leave a message</p>
             </div>
             <form onSubmit={submit} className="space-y-4 p-6">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -84,38 +76,28 @@ export default function Contact() {
                 required
                 rows={5}
                 className={field}
-                placeholder="Where should we travel together?"
+                placeholder="What should we build together?"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
               />
               <button
                 type="submit"
-                className="w-full rounded-md border-2 border-ink bg-board px-8 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-transform duration-300 hover:-translate-y-1"
+                className="w-full rounded-md bg-ink px-8 py-3 text-sm font-semibold text-paper transition-transform duration-300 hover:-translate-y-0.5"
               >
-                Send the message
+                Send Message
               </button>
             </form>
           </div>
         </Reveal>
       </div>
 
-      {/* buffer stop at the very end of the track */}
-      <div aria-hidden className="mx-auto max-w-md pb-10">
-        <div className="track w-full opacity-50" />
-        <div className="mx-auto mt-2 flex w-24 items-end justify-center gap-1">
-          <span className="h-6 w-2 rounded-t-sm bg-rail" />
-          <span className="h-9 w-14 rounded-t-md border-4 border-ink bg-board" />
-          <span className="h-6 w-2 rounded-t-sm bg-rail" />
+      <footer className="border-t border-ink/15 px-6 py-8">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3">
+          <p className="font-mono text-xs text-mist">
+            © {new Date().getFullYear()} {profile.name} · Mumbai, India
+          </p>
+          <p className="annotation">end of document · thanks for reading</p>
         </div>
-      </div>
-
-      <footer className="relative z-10 border-t-4 border-board bg-ink px-6 py-8 text-center">
-        <p className="font-hand text-xl text-cream/80">
-          made in Mumbai, between stations · {profile.name} · {new Date().getFullYear()}
-        </p>
-        <p className="mt-2 text-[11px] uppercase tracking-wideish text-cream/40">
-          yeh station aakhri hai — but every journey starts somewhere
-        </p>
       </footer>
     </section>
   )

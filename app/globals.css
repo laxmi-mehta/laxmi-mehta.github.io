@@ -2,8 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* light — ink on paper */
 :root {
   color-scheme: light;
+  --paper: 250 249 244;
+  --ink: 23 24 28;
+  --accent: 30 64 175;
+  --rust: 194 65 12;
+  --mist: 110 116 128;
+  --grid-alpha: 0.045;
+}
+
+/* dark — paper on ink */
+.dark {
+  color-scheme: dark;
+  --paper: 20 22 28;
+  --ink: 232 230 223;
+  --accent: 130 158 255;
+  --rust: 240 138 93;
+  --mist: 138 145 158;
+  --grid-alpha: 0.07;
 }
 
 html {
@@ -12,13 +30,19 @@ html {
 
 body {
   @apply font-body text-ink antialiased;
-  background-color: #f6f1e6;
+  background-color: rgb(var(--paper));
+  /* faint blueprint grid, quiet enough to read over */
+  background-image:
+    linear-gradient(rgb(var(--accent) / var(--grid-alpha)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--accent) / var(--grid-alpha)) 1px, transparent 1px);
+  background-size: 32px 32px;
   overflow-x: hidden;
+  transition: background-color 0.4s ease;
 }
 
 ::selection {
-  background: rgba(244, 185, 66, 0.55);
-  color: #1c2433;
+  background: rgb(var(--accent) / 0.2);
+  color: rgb(var(--ink));
 }
 
 /* thin, quiet scrollbar */
@@ -29,71 +53,24 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(28, 36, 51, 0.3);
+  background: rgb(var(--ink) / 0.25);
   border-radius: 8px;
 }
 
-/* aged paper — journal pages, notes */
-.paper {
-  background-color: rgba(253, 249, 240, 0.95);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  border: 1px solid rgba(28, 36, 51, 0.14);
+/* a sheet of the ledger — content sits on plain paper above the grid */
+.sheet {
+  background-color: rgb(var(--paper) / 0.92);
+  border: 1px solid rgb(var(--ink) / 0.14);
 }
 
-/* old cardboard railway ticket */
-.ticket-card {
-  background-color: #f1e5cb;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  border: 1.5px solid rgba(28, 36, 51, 0.35);
-}
-
-/* the classic yellow station board */
-.station-board {
-  background-color: #f4b942;
-  border: 4px solid #1c2433;
-  box-shadow:
-    inset 0 0 0 3px #f6f1e6,
-    inset 0 0 0 4px rgba(28, 36, 51, 0.35),
-    0 14px 34px -14px rgba(28, 36, 51, 0.55);
-}
-
-/* dark indicator board — departures, next train */
-.indicator-board {
-  background-color: #1c2433;
-  background-image: linear-gradient(rgba(246, 241, 230, 0.04) 1px, transparent 1px);
-  background-size: 100% 3px;
-  border: 2px solid rgba(28, 36, 51, 0.9);
-  box-shadow: 0 12px 30px -12px rgba(28, 36, 51, 0.5);
-}
-
-/* railway track — sleepers under a section divider */
-.track {
-  height: 10px;
-  background-image:
-    linear-gradient(to right, rgba(28, 36, 51, 0.55) 2px, transparent 2px),
-    linear-gradient(rgba(28, 36, 51, 0) 3px, rgba(28, 36, 51, 0.55) 3px, rgba(28, 36, 51, 0.55) 7px, rgba(28, 36, 51, 0) 7px);
-  background-size: 18px 100%, 100% 100%;
-}
-
-/* ambient keyframes — small mechanical movements */
-@keyframes sway {
-  0%, 100% { transform: rotate(-1.6deg); }
-  50%      { transform: rotate(1.6deg); }
-}
-
-@keyframes chug {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-2px); }
+/* mono annotation, the only decoration this design allows itself */
+.annotation {
+  @apply font-mono text-[11px] uppercase tracking-wideish text-mist;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50%      { opacity: 0.25; }
-}
-
-@keyframes rollBy {
-  from { transform: translateX(-15%); }
-  to   { transform: translateX(115%); }
+  50%      { opacity: 0.15; }
 }
 
 @media (prefers-reduced-motion: reduce) {

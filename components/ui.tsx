@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 // renders text with **term** markers as highlighted words
-export function Marked({ text, accent = 'text-rail' }: { text: string; accent?: string }) {
+export function Marked({ text, accent = 'text-accent' }: { text: string; accent?: string }) {
   const parts = text.split(/\*\*(.+?)\*\*/g)
   return (
     <>
@@ -24,7 +24,7 @@ export function Marked({ text, accent = 'text-rail' }: { text: string; accent?: 
 export function Reveal({
   children,
   delay = 0,
-  y = 32,
+  y = 28,
   className,
 }: {
   children: ReactNode
@@ -38,14 +38,14 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-// every section begins at a station — yellow enamel board, station code and all
+// editorial section header: figure number, title, hairline
 export function SectionHeading({
   code,
   kicker,
@@ -56,22 +56,19 @@ export function SectionHeading({
   title: string
 }) {
   return (
-    <div className="mb-12 text-center md:mb-16">
+    <div className="mb-12 md:mb-16">
       <Reveal>
-        <p className="font-hand text-2xl text-chai md:text-3xl">{kicker}</p>
+        <p className="annotation">
+          fig. {code} — {kicker}
+        </p>
       </Reveal>
-      <Reveal delay={0.15}>
-        <div className="station-board mx-auto mt-4 inline-block rounded-lg px-8 py-4 md:px-12 md:py-5">
-          <p className="text-[10px] font-bold uppercase tracking-wideish text-ink/70">
-            station {code}
-          </p>
-          <h2 className="mt-1 font-heading text-3xl font-semibold tracking-tight text-ink md:text-5xl">
-            {title}
-          </h2>
-        </div>
+      <Reveal delay={0.1}>
+        <h2 className="mt-3 font-heading text-4xl font-medium tracking-tight text-ink md:text-5xl">
+          {title}
+        </h2>
       </Reveal>
-      <Reveal delay={0.3}>
-        <div className="track mx-auto mt-6 w-40 opacity-40" />
+      <Reveal delay={0.2}>
+        <div className="mt-6 h-px w-full bg-ink/15" />
       </Reveal>
     </div>
   )

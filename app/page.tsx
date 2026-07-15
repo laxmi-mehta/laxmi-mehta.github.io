@@ -1,6 +1,6 @@
 import SmoothScroll from '@/components/SmoothScroll'
-import RouteRail from '@/components/RouteRail'
 import Nav from '@/components/Nav'
+import BackToTop from '@/components/BackToTop'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Education from '@/components/sections/Education'
@@ -13,8 +13,8 @@ import Contact from '@/components/sections/Contact'
 export default function Home() {
   return (
     <SmoothScroll>
-      <RouteRail />
       <Nav />
+      <BackToTop />
       <main className="relative">
         <Hero />
         <About />

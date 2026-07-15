@@ -21,6 +21,13 @@ export const profile = {
   photo: '/images/profile-image.jpg',
 }
 
+// the three numbers a recruiter should see in the first eight seconds
+export const heroStats = [
+  { value: '10k+', label: 'dairy centers served by my backend' },
+  { value: '64+', label: 'production reports built & maintained' },
+  { value: '~200', label: 'features & fixes shipped to production' },
+]
+
 // the single about-me page, one paragraph per entry (**term** renders highlighted)
 export const aboutMe = [
   'I’m a **Backend Developer at Adhyay Infotech**, where I build and maintain the backend of **Mobile Dairy** — a multi-tenant platform that powers milk collection, quality-based billing, dispatch and payments for **10,000+ dairy centers** across India. I own features end to end: **REST APIs with Django**, business workflows, **reporting modules** and **PostgreSQL optimization** for real production data.',

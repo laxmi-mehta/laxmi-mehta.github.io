@@ -43,10 +43,16 @@ export const metadata: Metadata = {
   },
 }
 
+// dark is the default — applied before paint so it never flashes light
+const themeInit = `try{if(localStorage.theme!=='light')document.documentElement.classList.add('dark')}catch(e){document.documentElement.classList.add('dark')}`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${karla.variable} ${caveat.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${fraunces.variable} ${karla.variable} ${caveat.variable}`} suppressHydrationWarning>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        {children}
+      </body>
     </html>
   )
 }
